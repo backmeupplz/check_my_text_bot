@@ -1,5 +1,11 @@
 name: English
 help: |
-  <b>Bot</b> allows you to see how Telegraf bots can be built.
+  \@check_my_text_bot checks spelling when added to a channel. Just add @check_my_text_bot as an admin to your channel, write /setup 1234567 (where 1234567 is the id of your channel) here and get updates in @check_my_text_bot whenever it finds typos or spelling errors.
+
+  /help — command list
+  /setup 1234567 — turn on @check_my_text_bot on the channel with the specified id
+  /glvrd — toggle glvrd.ru (only works with Russian)
+
+  You can support the bot creator with the GitHub Sponsors program <a href="https://github.com/sponsors/backmeupplz">here/a>. Updates and support can be found on @bot_support.
 language: Please, select the language.
-language_selected: <b>Bot</b> now speaks English.
+language_selected: \@check_my_text_bot now speaks English.
