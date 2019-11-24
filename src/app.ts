@@ -15,9 +15,12 @@ import { handleGlvrd } from './commands/glvrd'
 import { handleSetup } from './commands/setup'
 import { handleChannels } from './commands/channels'
 import { handleDisable } from './commands/disable'
+import { handleGetId } from './commands/getId'
 
 // Check time
 bot.use(checkTime)
+// Get id
+bot.command('getId', handleGetId)
 // Hijack channel posts
 bot.use(hijackChannelPosts)
 // Attach user
