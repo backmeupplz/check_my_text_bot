@@ -10,7 +10,7 @@ help: |
   /channels — список каналов, про которые слать нотификации
   /getId — получить идентификатор этого чата (работает на каналах)
 
-  Поддержать автора бота можно, подписавшись на его канал — @golden_borodutch — и через программу GitHub Sponsors <a href="https://github.com/sponsors/backmeupplz">вот тут</a>. Актуальные обновления и поддержку можно найти на @bot_support.
+  Поддержать автора бота можно, подписавшись на его канал — @golden_borodutch — и через программу GitHub Sponsors <a href="https://github.com/sponsors/backmeupplz">вот тут</a>. Актуальные обновления и поддержку можно найти на @bot_support. Исходный код бота можно найти <a href="https://github.com/backmeupplz/check_my_text_bot>тут</a>.
 language: Пожалуйста, выберите язык.
 language_selected: '@check_my_text_bot теперь говорит по-русски.'
 glvrd_on: Главред включен.
