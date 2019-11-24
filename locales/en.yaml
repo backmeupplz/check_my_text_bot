@@ -10,7 +10,7 @@ help: |
   /channels — list channels with spellcheck notifications enabled
   /getId — get id of this chat (works on channels too)
 
-  You can support the bot creator with the GitHub Sponsors program <a href="https://github.com/sponsors/backmeupplz">here</a>. Updates and support can be found on @bot_support. Source code is located <a href="https://github.com/backmeupplz/check_my_text_bot>here</a>.
+  You can support the bot creator with the GitHub Sponsors program <a href="https://github.com/sponsors/backmeupplz">here</a>. Updates and support can be found on @bot_support. Source code is located <a href="https://github.com/backmeupplz/check_my_text_bot">here</a>.
 language: Please, select the language.
 language_selected: '@check_my_text_bot now speaks English.'
 glvrd_on: Glavred on.
