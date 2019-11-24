@@ -2,6 +2,7 @@ import * as dotenv from 'dotenv'
 dotenv.config({ path: `${__dirname}/../.env` })
 import { bot } from './helpers/bot'
 import { checkTime } from './middlewares/checkTime'
+import { hijackChannelPosts } from './middlewares/hijackChannelPosts'
 import { handleHelp } from './commands/help'
 import { setupI18N } from './helpers/i18n'
 import {
@@ -10,9 +11,15 @@ import {
   handleLanguageAction,
 } from './commands/language'
 import { attachUser } from './middlewares/attachUser'
+import { handleGlvrd } from './commands/glvrd'
+import { handleSetup } from './commands/setup'
+import { handleChannels } from './commands/channels'
+import { handleDisable } from './commands/disable'
 
 // Check time
 bot.use(checkTime)
+// Hijack channel posts
+bot.use(hijackChannelPosts)
 // Attach user
 bot.use(attachUser)
 // Setup localization
@@ -21,6 +28,10 @@ setupI18N(bot)
 bot.command(['help', 'start'], handleHelp)
 bot.command('language', handleLanguage)
 bot.action(languageActions, handleLanguageAction)
+bot.command('glvrd', handleGlvrd)
+bot.command('setup', handleSetup)
+bot.command('disable', handleDisable)
+bot.command('channels', handleChannels)
 // Setup catch
 bot.catch(console.error)
 

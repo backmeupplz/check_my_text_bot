@@ -1,8 +1,7 @@
 // Dependencies
-import { ContextMessageUpdate, Markup as m, Extra } from 'telegraf'
+import { ContextMessageUpdate, Markup as m } from 'telegraf'
 import { readdirSync, readFileSync } from 'fs'
 import { safeLoad } from 'js-yaml'
-import { ExtraEditMessage } from 'telegraf/typings/telegram-types'
 
 export async function handleLanguage(ctx: ContextMessageUpdate) {
   await ctx.reply(ctx.i18n.t('language'), {
@@ -25,9 +24,10 @@ export async function handleLanguageAction(ctx: ContextMessageUpdate) {
     message.chat.id,
     message.message_id,
     undefined,
-    ctx.i18n.t('language_selected'),
-    Extra.HTML(true) as ExtraEditMessage
+    ctx.i18n.t('language_selected')
   )
+
+  return ctx.answerCbQuery()
 }
 
 function languageKeyboard() {

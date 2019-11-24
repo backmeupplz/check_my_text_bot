@@ -1,4 +1,4 @@
-import { prop, getModelForClass } from '@typegoose/typegoose'
+import { prop, getModelForClass, arrayProp } from '@typegoose/typegoose'
 
 export class User {
   @prop({ required: true, index: true, unique: true })
@@ -6,10 +6,16 @@ export class User {
 
   @prop({ required: true, default: 'en' })
   language: string
+
+  @arrayProp({ items: Number, index: true, required: true, default: [] })
+  channels: number[]
+
+  @prop({ required: true, default: false })
+  glvrd: boolean
 }
 
 // Get User model
-const UserModel = getModelForClass(User, {
+export const UserModel = getModelForClass(User, {
   schemaOptions: { timestamps: true },
 })
 
