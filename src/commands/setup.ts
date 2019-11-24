@@ -32,6 +32,12 @@ export async function handleSetup(ctx: ContextMessageUpdate) {
     )
   }
 
+  if (channel.type !== 'channel') {
+    return ctx.replyWithHTML(
+      ctx.i18n.t('not_a_channel', { identificator: identificator })
+    )
+  }
+
   ctx.dbuser.channels.push(channel.id)
   await ctx.dbuser.save()
 

@@ -23,3 +23,4 @@ setup_help: Please, use format <code>/setup 1234567</code> or <code>/setup @user
 disable_help: Please, use format <code>/disable 1234567</code> when disabling a channel. You can see the list of enabled channels with /channels.
 disable_fail: Looks like you don't have a channel enabled with the identifier <b>${identificator}</b>. Please, check the list of enabled channels with the /channels command.
 disable_success: Channel <b>${identificator}</b> has been disabled.
+not_a_channel: Unfortunately, it is not a channel.
