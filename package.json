@@ -1,9 +1,9 @@
 {
-  "name": "telegraf-template",
+  "name": "check_my_text_bot",
   "version": "1.0.0",
-  "description": "Telegram bot template based on telegraf.js.org",
+  "description": "Spellchecker bot for Telegram",
   "main": "dist/app.js",
-  "repository": "https://github.com/backmeupplz/telegraf-template",
+  "repository": "https://github.com/backmeupplz/check_my_text_bot",
   "author": "backmeupplz <backmeupplz@gmail.com>",
   "license": "MIT",
   "private": false,
