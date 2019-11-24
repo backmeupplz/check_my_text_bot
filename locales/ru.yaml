@@ -1,11 +1,12 @@
 name: Русский
 help: |
-  \@check_my_text_bot проверяет орфографию в постах на каналах. Просто добавьте @check_my_text_bot админом на ваш канал, напишите сюда /setup 1234567 (где 1234567 — это id вашего канала) и получайте уведомления в @check_my_text_bot, если у вас найдены ошибки в тексте.
+  @check_my_text_bot проверяет орфографию в постах на каналах. Просто добавьте @check_my_text_bot админом на ваш канал, напишите сюда /setup 1234567 (где 1234567 — это id или @username вашего канала) и получайте уведомления в @check_my_text_bot, если у вас найдены ошибки в тексте.
 
   /help — список команд
-  /setup 1234567 — включить @check_my_text_bot на канале с указанным идентификатором
+  /setup 1234567 — включить @check_my_text_bot на канале с указанным идентификатором или @username
+  /disable 1234567 - выключить уведомления @check_my_text_bot с канала с указанным идентификатором или @username
   /glvrd — включить или выключить glvrd.ru (работает только с русским языком)
 
-  Поддержать автора бота можно, подписавшись на его канал — @golden_borodutch — и через программу GitHub Sponsors <a href="https://github.com/sponsors/backmeupplz">вот тут/a>. Актуальные обновления и поддержку можно найти на @bot_support.
+  Поддержать автора бота можно, подписавшись на его канал — @golden_borodutch — и через программу GitHub Sponsors <a href="https://github.com/sponsors/backmeupplz">вот тут</a>. Актуальные обновления и поддержку можно найти на @bot_support.
 language: Пожалуйста, выберите язык.
-language_selected: \@check_my_text_bot теперь говорит по-русски.
+language_selected: '@check_my_text_bot теперь говорит по-русски.'
