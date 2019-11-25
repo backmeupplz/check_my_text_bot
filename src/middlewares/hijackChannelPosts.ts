@@ -74,14 +74,4 @@ export async function hijackChannelPosts(
   if (!needsGlvrd) {
     return
   }
-  console.log(textToCheck)
-  console.log('getting there')
-  const session = (
-    await Axios.post(
-      'https://api.glvrd.ru/v2/session?app=check_my_text_bot/1.0'
-    )
-  ).data
-
-  // const glvrdResponse = (await Axios.post('https://api.glvrd.ru/v2/proofread/')).data
-  console.log(session)
 }
