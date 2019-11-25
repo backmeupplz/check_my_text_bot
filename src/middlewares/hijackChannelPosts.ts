@@ -3,6 +3,7 @@ import { UserModel } from '../models'
 import Axios from 'axios'
 import * as qs from 'querystring'
 import { ExtraReplyMessage } from 'telegraf/typings/telegram-types'
+const emojiRegex = require('emoji-regex')
 
 export async function hijackChannelPosts(
   ctx: ContextMessageUpdate,
@@ -17,7 +18,7 @@ export async function hijackChannelPosts(
   if (!ctx.channelPost.text) {
     return
   }
-  const textToCheck = ctx.channelPost.text
+  const textToCheck = ctx.channelPost.text.replace(emojiRegex(), '')
   const adminIds = (await ctx.getChatAdministrators()).map(m => m.user.id)
   // Get users that need to receive an update
   const users = await UserModel.find({
@@ -28,11 +29,16 @@ export async function hijackChannelPosts(
     return
   }
   const needsGlvrd = users.reduce((prev, cur) => cur.glvrd || prev, false)
+  const needsEnglish = users.reduce((prev, cur) => cur.english || prev, false)
   // Check spelling
   const yandexResponse = (
     await Axios.post(
       'https://speller.yandex.net/services/spellservice.json/checkText',
-      qs.stringify({ text: textToCheck, options: 14 })
+      qs.stringify({
+        text: textToCheck,
+        options: 14,
+        lang: needsEnglish ? 'ru,en' : 'ru',
+      })
     )
   ).data
   // Construct report
@@ -64,4 +70,18 @@ export async function hijackChannelPosts(
       // Do nothing
     }
   }
+  // Check glvred
+  if (!needsGlvrd) {
+    return
+  }
+  console.log(textToCheck)
+  console.log('getting there')
+  const session = (
+    await Axios.post(
+      'https://api.glvrd.ru/v2/session?app=check_my_text_bot/1.0'
+    )
+  ).data
+
+  // const glvrdResponse = (await Axios.post('https://api.glvrd.ru/v2/proofread/')).data
+  console.log(session)
 }

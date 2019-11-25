@@ -16,6 +16,7 @@ import { handleSetup } from './commands/setup'
 import { handleChannels } from './commands/channels'
 import { handleDisable } from './commands/disable'
 import { handleGetId } from './commands/getId'
+import { handleEnglish } from './commands/english'
 
 // Check time
 bot.use(checkTime)
@@ -35,6 +36,7 @@ bot.command('glvrd', handleGlvrd)
 bot.command('setup', handleSetup)
 bot.command('disable', handleDisable)
 bot.command('channels', handleChannels)
+bot.command('english', handleEnglish)
 // Setup catch
 bot.catch(console.error)
 

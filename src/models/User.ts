@@ -6,6 +6,8 @@ export class User {
 
   @prop({ required: true, default: 'en' })
   language: string
+  @prop({ required: true, default: true })
+  english: boolean
 
   @arrayProp({ items: Number, index: true, required: true, default: [] })
   channels: number[]
