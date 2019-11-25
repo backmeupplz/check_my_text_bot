@@ -45,7 +45,7 @@ export async function hijackChannelPosts(
   if (!yandexResponse.length) {
     return
   }
-  let text = `${
+  let text = `Yandex.Speller\n${
     ctx.chat.username
       ? `<a href="https://t.me/${ctx.chat.username}/${ctx.channelPost.message_id}">${ctx.chat.username}/${ctx.channelPost.message_id}</a>`
       : ''

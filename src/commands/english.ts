@@ -5,7 +5,7 @@ export async function handleEnglish(ctx: ContextMessageUpdate) {
   ctx.dbuser.english = !ctx.dbuser.english
   await ctx.dbuser.save()
   await ctx.replyWithHTML(
-    ctx.i18n.t(ctx.dbuser.glvrd ? 'english_on' : 'english_off'),
+    ctx.i18n.t(ctx.dbuser.english ? 'english_on' : 'english_off'),
     Extra.webPreview(false) as ExtraReplyMessage
   )
 }
