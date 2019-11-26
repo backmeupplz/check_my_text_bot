@@ -3,6 +3,7 @@ import { UserModel } from '../models'
 import Axios from 'axios'
 import * as qs from 'querystring'
 import { ExtraReplyMessage } from 'telegraf/typings/telegram-types'
+import { proofRead } from '../helpers/glvrd'
 const emojiRegex = require('emoji-regex')
 
 export async function hijackChannelPosts(
@@ -42,36 +43,57 @@ export async function hijackChannelPosts(
     )
   ).data
   // Construct report
-  if (!yandexResponse.length) {
-    return
-  }
-  let text = `Yandex.Speller\n${
-    ctx.chat.username
-      ? `<a href="https://t.me/${ctx.chat.username}/${ctx.channelPost.message_id}">${ctx.chat.username}/${ctx.channelPost.message_id}</a>`
-      : ''
-  }`
-  for (const correction of yandexResponse) {
-    text = `${text}\n(<a href="https://yandex.ru/dev/speller/doc/dg/reference/error-codes-docpage/">${
-      correction.code
-    }</a>) ${correction.word
-      .replace('<', '')
-      .replace('>', '')}: ${correction.s
-      .map(c => c.replace('<', '').replace('>', ''))
-      .join(', ')}`
-  }
-  for (const user of users) {
-    try {
-      await ctx.telegram.sendMessage(
-        user.id,
-        text,
-        Extra.HTML(true).webPreview(false) as ExtraReplyMessage
-      )
-    } catch {
-      // Do nothing
+  if (yandexResponse.length) {
+    let text = `Yandex.Speller\n${
+      ctx.chat.username
+        ? `<a href="https://t.me/${ctx.chat.username}/${ctx.channelPost.message_id}">${ctx.chat.username}/${ctx.channelPost.message_id}</a>`
+        : ''
+    }`
+    for (const correction of yandexResponse) {
+      text = `${text}\n(<a href="https://yandex.ru/dev/speller/doc/dg/reference/error-codes-docpage/">${
+        correction.code
+      }</a>) ${correction.word
+        .replace('<', '')
+        .replace('>', '')}: ${correction.s
+        .map(c => c.replace('<', '').replace('>', ''))
+        .join(', ')}`
+    }
+    for (const user of users) {
+      try {
+        await ctx.telegram.sendMessage(
+          user.id,
+          text,
+          Extra.HTML(true).webPreview(false) as ExtraReplyMessage
+        )
+      } catch {
+        // Do nothing
+      }
     }
   }
   // Check glvred
   if (!needsGlvrd) {
     return
+  }
+  // Check glvrd
+  const glvrdResult = await proofRead(textToCheck)
+  let glvrdText = `Glavred (${glvrdResult.score})\n`
+  for (const hint of glvrdResult.hints) {
+    glvrdText = `${glvrdText}\n"${textToCheck.substring(
+      hint.start,
+      hint.end
+    )}" — ${hint.name}: ${hint.description}`
+  }
+  for (const user of users) {
+    if (user.glvrd) {
+      try {
+        await ctx.telegram.sendMessage(
+          user.id,
+          glvrdText,
+          Extra.HTML(true).webPreview(false) as ExtraReplyMessage
+        )
+      } catch {
+        // Do nothing
+      }
+    }
   }
 }
