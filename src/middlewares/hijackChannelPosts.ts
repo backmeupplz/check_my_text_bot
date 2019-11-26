@@ -46,7 +46,7 @@ export async function hijackChannelPosts(
   if (yandexResponse.length) {
     let text = `Yandex.Speller\n${
       ctx.chat.username
-        ? `<a href="https://t.me/${ctx.chat.username}/${ctx.channelPost.message_id}">${ctx.chat.username}/${ctx.channelPost.message_id}</a>`
+        ? `<a href="https://t.me/${ctx.chat.username}/${ctx.channelPost.message_id}">${ctx.chat.username}/${ctx.channelPost.message_id}</a>\n`
         : ''
     }`
     for (const correction of yandexResponse) {
@@ -76,7 +76,11 @@ export async function hijackChannelPosts(
   }
   // Check glvrd
   const glvrdResult = await proofRead(textToCheck)
-  let glvrdText = `Glavred (${glvrdResult.score})\n`
+  let glvrdText = `Glavred (${glvrdResult.score})\n${
+    ctx.chat.username
+      ? `<a href="https://t.me/${ctx.chat.username}/${ctx.channelPost.message_id}">${ctx.chat.username}/${ctx.channelPost.message_id}</a>\n`
+      : ''
+  }`
   for (const hint of glvrdResult.hints) {
     glvrdText = `${glvrdText}\n"${textToCheck.substring(
       hint.start,
