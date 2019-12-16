@@ -28,11 +28,7 @@ export async function check(ctx: ContextMessageUpdate, next: Function) {
     ).data
     // Construct report
     if (yandexResponse.length) {
-      let text = `Yandex.Speller\n${
-        ctx.chat.username
-          ? `<a href="https://t.me/${ctx.chat.username}/${ctx.channelPost.message_id}">${ctx.chat.username}/${ctx.channelPost.message_id}</a>\n`
-          : ''
-      }`
+      let text = 'Yandex.Speller\n'
       for (const correction of yandexResponse) {
         text = `${text}\n(<a href="https://yandex.ru/dev/speller/doc/dg/reference/error-codes-docpage/">${
           correction.code
@@ -66,11 +62,7 @@ export async function check(ctx: ContextMessageUpdate, next: Function) {
     }
     // Check glvrd
     const glvrdResult = await proofRead(textToCheck)
-    let glvrdText = `Glavred (${glvrdResult.score})\n${
-      ctx.chat.username
-        ? `<a href="https://t.me/${ctx.chat.username}/${ctx.channelPost.message_id}">${ctx.chat.username}/${ctx.channelPost.message_id}</a>\n`
-        : ''
-    }`
+    let glvrdText = `Glavred (${glvrdResult.score})\n`
     for (const hint of glvrdResult.hints) {
       glvrdText = `${glvrdText}\n"${textToCheck.substring(
         hint.start,
