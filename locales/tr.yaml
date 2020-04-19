@@ -1,0 +1,29 @@
+name: Turkish
+help: |
+  @check_my_text_bot bir kanala eklendiğinde yazım hatalarını kontrol eder. Sadece @check_my_text_bot'u kanalınıza yönetici olarak ekleyin, burada /setup 1234567 yazın (1234567 olan kısım kanalınızın id'si veya @kullanıcıadı'dır) ve yazım hatası bulunduğunda @check_my_text_bot'ta güncelleme alın.
+
+  /help — komut listesi
+  /setup 1234567 — kanal için @check_my_text_bot'tan bildirimleri etkinleştirin
+  /disable 1234567 — kanal için @check_my_text_bot'tan bildirimleri devre dışı bırakın
+  /glvrd — glvrd.ru ayarı (sadece Rusça ile çalışır)
+  /language — dili değiştir
+  /channels — yazım kontrolü bildirimleri açık olan kanalların listesi
+  /getId — sohbetin id'sini alın (kanallarda da çalışır)
+  /english — İngilizce yazım kontrolüne dönün
+
+  Botun yaratıcısını <a href="https://github.com/sponsors/backmeupplz">buradan</a> GitHub Sponsors programıyla destekleyebilirsiniz. Güncelleme ve destek @bot_support'ta bulunabilir. Kaynak kodu <a href="https://github.com/backmeupplz/check_my_text_bot">burada</a> yer alıyor.
+language: Lütfen dili seçin.
+language_selected: '@check_my_text_bot artık Türkçe konuşuyor.'
+glvrd_on: Glavred açık.
+glvrd_off: Glavred kapalı.
+no_channel_found: "Üzgünüz, <b>${identificator}</b> kanalı henüz @check_my_text_bot kullanmıyor. Lütfen @check_my_text_bot'u <b>${identificator}</b> kanalına yönetici olarak ekleyin. İpucu: @kullanıcıadı'nda <code>@</code> işaretini unutmadınız, değil mi?"
+not_an_admin: Üzgünüz, kanaldan veri almak için yönetici olmalısınız.
+setup_success: Mükemmel! @check_my_text_bot, <b>${identificator}</b> kanalındaki metinlerde hata bulursa bildirim alacaksınız.
+no_channels: Henüz kanalınız yok, lütfen eklemek için /setup komutunu kullanın.
+setup_help: Lütfene, kanal eklerken <code>/setup 1234567</code> veya <code>/setup @kullanıcıadı</code> formatını kullanın.
+disable_help: Lütfen, kanalı devre dışı bırakırken <code>/disable 1234567</code> formatını kullanın. /channels ile etkin kanal listenizi görebilirsiniz.
+disable_fail: <b>${identificator}</b> id'siyle etkin bir kanalınız yok gibi görünüyor. Lütfen /channels komutuyla etkin kanal listenizi kontrol edin.
+disable_success: <b>${identificator}</b> kanalı devre dışı bırakıldı.
+not_a_channel: Üzgünüz, o bir kanal değil.
+english_on: İngilizce yazım kontrolü açık.
+english_off: İngilizce yazım kontrolü kapalı.
