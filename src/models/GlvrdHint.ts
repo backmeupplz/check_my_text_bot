@@ -1,16 +1,21 @@
-import { prop, getModelForClass } from '@typegoose/typegoose'
+import { Schema, model } from 'mongoose'
 
 export class GlvrdHint {
-  @prop({ required: true, index: true, unique: true })
   id: string
 
-  @prop({ required: true })
   name: string
-  @prop({ required: true })
   description: string
 }
 
 // Get GlvrdHint model
-export const GlvrdHintModel = getModelForClass(GlvrdHint, {
-  schemaOptions: { timestamps: true },
-})
+export const GlvrdHintModel = model<GlvrdHint>(
+  'GlvrdHint',
+  new Schema<GlvrdHint>(
+    {
+      id: { type: String, required: true, index: true, unique: true },
+      name: { type: String, required: true },
+      description: { type: String, required: true },
+    },
+    { timestamps: true }
+  )
+)

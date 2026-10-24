@@ -19,21 +19,18 @@
     "nodemon": "^2.0.1"
   },
   "dependencies": {
-    "@typegoose/typegoose": "^6.1.5",
-    "@types/axios": "^0.14.0",
     "@types/dotenv": "^8.2.0",
     "@types/emoji-regex": "^8.0.0",
-    "@types/mongoose": "^5.5.32",
-    "@types/node": "^12.12.12",
+    "@types/node": "^22.20.5",
     "@types/request-promise-native": "^1.0.17",
-    "axios": "^0.21.2",
+    "axios": "^0.34.0",
     "dotenv": "^8.2.0",
     "emoji-regex": "^8.0.0",
-    "mongoose": "^5.7.12",
+    "mongoose": "^6.13.12",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.8",
     "telegraf": "^3.33.3",
     "telegraf-i18n": "^6.6.0",
-    "typescript": "^3.7.2"
+    "typescript": "^5.9.3"
   }
 }

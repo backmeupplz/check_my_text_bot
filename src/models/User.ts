@@ -1,25 +1,30 @@
-import { prop, getModelForClass, arrayProp } from '@typegoose/typegoose'
+import { Schema, model } from 'mongoose'
 
 export class User {
-  @prop({ required: true, index: true, unique: true })
   id: number
 
-  @prop({ required: true, default: 'en' })
   language: string
-  @prop({ required: true, default: true })
   english: boolean
 
-  @arrayProp({ items: Number, index: true, required: true, default: [] })
   channels: number[]
 
-  @prop({ required: true, default: false })
   glvrd: boolean
 }
 
 // Get User model
-export const UserModel = getModelForClass(User, {
-  schemaOptions: { timestamps: true },
-})
+export const UserModel = model<User>(
+  'User',
+  new Schema<User>(
+    {
+      id: { type: Number, required: true, index: true, unique: true },
+      language: { type: String, required: true, default: 'en' },
+      english: { type: Boolean, required: true, default: true },
+      channels: { type: [Number], index: true, required: true, default: [] },
+      glvrd: { type: Boolean, required: true, default: false },
+    },
+    { timestamps: true }
+  )
+)
 
 // Get or create user
 export async function findUser(id: number) {
